@@ -1,24 +1,17 @@
 'use strict';
 
-const pdfGenerator = require('./pdfGenerator');
+const pdfGenerator = require('./src/pdfGenerator');
 
-module.exports.hello = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'v1.0',
-    }),
-  };
 
-};
-
-module.exports.generateReceipt = async (event) => {
-  pdfGenerator();
-
+exports.generateReceipt = async (event) => {
+  const pdf = pdfGenerator(event);
+  console.log(pdf)
   return {
     statusCode: 200,
     body: JSON.stringify({
       message: 'generated receipt',
+      type: 'application/pdf',
+      content: pdf
     }),
   };
 

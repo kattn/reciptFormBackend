@@ -7,15 +7,9 @@ provider:
   runtime: nodejs8.10
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: users/create
-          method: get
   generateReceipt:
     handler: handler.generateReceipt
     events:
       - http:
           path: /generateReceipt
-          method: get
+          method: post
